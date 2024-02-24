@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int num1, num2, choose;
+    cout << "Enter The First Number :";
+    cin >> num1;
+    cout << "Enter The Second Number :";
+    cin >> num2;
+    do
+    {
+        cout << "which operation you want to perform"<<endl;
+        cout << "1)addition"<<endl;
+        cout << "2)subtraction"<<endl;
+        cout << "3)multiplication"<<endl;
+        cout << "4)division"<<endl;
+        cout << "5)exit"<<endl;
+        cin >> choose;
+        switch (choose)
+        {
+        case 1:
+            cout << "your result :" << num1 + num2<<endl<<endl;
+            break;
+
+        case 2:
+            cout << "your result :" << num1  - num2<<endl<<endl;
+            break;
+        case 3:
+            cout << "your result :" << num1 * num2<<endl<<endl;
+            break;
+        case 4:
+            cout << "your result :" << num1 / num2<<endl<<endl;
+            break;
+        case 5:
+           cout<< "exit"<<endl;
+            break;
+        default:
+            break;
+        }
+
+    } while (choose != 5);
+    return 0;
+}
