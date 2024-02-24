@@ -1,0 +1,98 @@
+#include <iostream>
+using namespace std;
+
+class Todolist
+{
+public:
+    string arr[1000];
+    int top;
+    int size=0;
+    Todolist()
+    { }
+    void view_task()
+    {
+
+        int n = 1;
+        cout << "TASKS: " << endl<<endl;
+        for (int i = 0; i < size; i++)
+        {
+            cout << n << "." << arr[i] <<endl<<endl;
+            n++;
+        }
+    }
+    void add_task(string add)
+    {
+        arr[size] = add;
+        size = size + 1;
+        cout << "Task Added:" << add << endl<<endl;
+    }
+    void remove_task(int num)
+    {
+
+        if (num < 1 || num > size) {
+            cout << "Invalid task index." << endl<<endl;
+            return;
+        }
+        for (int i = num-1; i < size-1; i++)
+        {
+            arr[i] = arr[num + 1];
+        }
+        size--;
+        cout<<"removed :"<<arr[num-1]<<endl<<endl;
+    }
+    void mark_task(int ind)
+    {
+         if (ind < 1 || ind > size) {
+            cout << "Invalid task index." << endl<<endl;
+            return;
+        }
+        arr[ind-1] = arr[ind-1] + "-completed";
+        cout<<"task mark as completed :"<<arr[ind-1]<<endl<<endl;
+    }
+};
+int main()
+{
+    Todolist s;
+    int choice;
+    int num, ind;
+    string task;
+    cout << "1.add task" << endl
+         << "2.view task" << endl
+         << "3.mark task completed" << endl
+         << "4.remove task" << endl
+         << "5.exit" << endl;
+    do
+    {
+
+        cout << "Enter your choice:" << endl;
+        cin >> choice;
+        switch (choice)
+        {
+        case 1:
+            cout << "Enter your task:";
+            cin >> task;
+            s.add_task(task);
+            break;
+        case 2:
+            s.view_task();
+            break;
+        case 3:
+            cout << "enter task index to mark as completed :" << endl;
+            cin >> ind;
+            s.mark_task(ind);
+            break;
+
+        case 4:
+            cout << "enter the task index which you want to remove" << endl;
+            cin >> num;
+            s.remove_task(num);
+            break;
+        case 5:
+            cout << "exit" << endl;
+            break;
+        default:
+            cout << "Invalid choice. Please try again." << endl;
+        }
+    } while (choice != 5);
+    return 0;
+}
